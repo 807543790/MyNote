@@ -1,6 +1,6 @@
 package com.zhangbin.设计模式.单例模式;
 
-public class SingletonTest03 {
+public class SingletonNote03 {
     public static void main(String[] args) {
         Singleton03 instance = Singleton03.getInstance();
         Singleton03 instance1 = Singleton03.getInstance();
