@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>计算属性和methods区别</title>
+    <style>
+        .class1{
+            color: red;
+        }
+    </style>
+</head>
+<body>
+<div id="app">
+   <h1>{{totalMoney}}</h1>
+   <h1>{{totalMoney}}</h1>
+   <h1>{{totalMoney}}</h1>
+   <h1>{{totalMoney}}</h1>
+   <h1>{{totalMoney}}</h1>
+   <h1>{{getName()}}</h1>
+   <h1>{{getName()}}</h1>
+   <h1>{{getName()}}</h1>
+   <h1>{{getName()}}</h1>
+   <h1>{{getName()}}</h1>
+</div>
+</body>
+<script src="../js/vue.js"></script>
+<script>
+    const app = new Vue({
+        el: "#app",
+        data: {
+            firstName:"Tom",
+            lastName:"Cat",
+        },
+        // methods没有缓存，调用一次执行一次
+        methods:{
+            getName(){
+                alert("methods");
+                return this.firstName +","+this.lastName;
+            }
+        },
+        // 计算属性有缓存
+        computed:{
+            totalMoney(){
+                alert("计算属性");
+                return this.firstName +","+this.lastName;
+             },
+        },
+
+    })
+</script>
+</html>

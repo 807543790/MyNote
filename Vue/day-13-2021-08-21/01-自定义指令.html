@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>自定义标签</title>
+</head>
+<body>
+<div  id="app">
+    <input v-big v-color type="text" value="111">
+    <input v-big:30  v-focus type="text" value="222">
+</div>
+</body>
+<script src="../js/vue.js"></script>
+<script>
+    const app = new Vue({
+        el:"#app",
+        data:{
+
+        },
+        //自定义指令
+        directives:{
+            // big(el,binding){
+            //     el.style.fontSize = "100px"
+            // },
+            //传参
+            big(el,binding){
+                console.log(binding)
+                el.style.fontSize = (binding.arg || 20) +"px";
+            },
+            color(el,binding){
+                el.style.color = "red"
+            },
+            focus:{
+                inserted:function (el){
+                    el.focus();
+                }
+             }
+
+        }
+
+    })
+
+</script>
+</html>

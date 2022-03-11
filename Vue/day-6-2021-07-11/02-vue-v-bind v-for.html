@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>动态绑定class</title>
+    <style>
+        .class1{
+            color: red;
+        }
+    </style>
+</head>
+<body>
+<div id="app">
+    <ul>
+        <li v-for="(m,index) in movies" @click="tableClick(index)" :class="classRed">{{m}}-{{index}}</li>
+    </ul>
+</div>
+</body>
+<script src="../js/vue.js"></script>
+<script>
+    const app = new Vue({
+        el: "#app",
+        data: {
+            movies:['java','tomcat','linux'],
+            classRed:"",
+        },
+        methods:{
+            tableClick(val){
+                console.log(val);
+                this.classRed = "";
+                this.classRed = 'class1';
+            }
+        }
+    })
+</script>
+</html>

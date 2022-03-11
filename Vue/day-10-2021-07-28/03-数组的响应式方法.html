@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>v-on</title>
+</head>
+<body>
+<div  id="app">
+
+   <ul>
+       <li v-for="name in names">{{name}}</li>
+   </ul>
+    <button @click="butClick">按钮</button>
+</div>
+</body>
+<script src="../js/vue.js"></script>
+<script>
+    const app = new Vue({
+        el:"#app",
+        data:{
+            names : ["tom","jrray","郭德纲"],
+        },
+        methods:{
+            butClick(){
+                //响应式
+                //     this.names.push("1");  //数组添加元素
+                //     this.names.pop(); //数组元素从后删除
+                //      this.names.shift(); //数组元素从前删除
+                //      this.names.unshift("23"); //数组元素从前添加
+
+                //      this.names.splice(1,1,"J","K"); //数组元素修改（可新增删除修改元素）
+                //         (索引值，删除个数，新增值)
+                //            如果不删除，删除的值为0
+                //            新增值可以有多个
+
+                //       this.names.sort(); //数组元素排序，可以自定义排序方法
+                //       this.names.reverse(); //数组元素反转
+
+
+                //不是响应式的
+                //     this.names[0] = '111';
+                // 如果有修改需求并且满足响应式，可以使用splice方法，或者Vue.set()方法
+
+                //         Vue.set(this.names,1,"jake");
+                //          (要修改的对象，索引值，修改后的值)
+            }
+        }
+
+
+    })
+
+</script>
+</html>

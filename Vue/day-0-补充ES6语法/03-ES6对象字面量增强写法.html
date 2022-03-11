@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>const</title>
+</head>
+<body>
+
+</body>
+<script src="../js/vue.js"></script>
+<script>
+
+    const name = "张三";
+    const age = 18;
+
+    // ES5的写法
+    // const obj = {
+    //     name: name,
+    //     age : age,
+    // }
+
+    // ES6的写法
+    const obj ={
+        name,
+        age,
+    }
+
+    // 二:函数的增强写法
+     //ES5的写法
+    // const demo = {
+    //     run:function (){
+    //         alert("22");
+    //     }
+    // }
+
+    //ES6的写法
+    const demo ={
+        run(){
+            alert("22");
+        }
+    }
+</script>
+</html>

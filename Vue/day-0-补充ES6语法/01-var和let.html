@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <button>按钮1</button>
+    <button>按钮2</button>
+    <button>按钮3</button>
+    <button>按钮4</button>
+    <button>按钮5</button>
+</body>
+<script src="../js/vue.js"></script>
+<script>
+    const bats = document.getElementsByTagName("button");
+    for (var i = 0; i <bats.length ; i++) {
+        bats[i].onclick= function (){
+            alert("第"+[i]+"个按钮")
+        }
+    }
+    //let在if和for中也是有快级作用域的，所以数据不会被修改导致按钮和当前数不符合
+    // for (let i = 0; i <bats.length ; i++) {
+    //     bats[i].onclick= function (){
+    //         alert("第"+[i]+"个按钮")
+    //     }
+    // }
+</script>
+</html>

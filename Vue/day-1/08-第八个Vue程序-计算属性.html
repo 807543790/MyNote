@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:v-bind="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>计算属性</title>
+</head>
+<body>
+<!--注意点时间一是方法，时间二是属性，属性存在内存中，类似于缓存。重新调用this方法时才能更新-->
+<div id="app">
+    <p>时间1 {{currentTime1()}}</p>
+    <p>时间2 {{currentTime2}}</p>
+    <p>{{message}}</p>
+</div>
+
+
+</body>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script type="text/javascript">
+    var vm = new Vue({
+        el: "#app",
+        data: {
+            message:"张斌"
+        },
+        methods:{
+            currentTime1:function () {//这是一个方法
+                return Date.now();//返回一个时间戳
+            }
+        },
+        computed:{
+            currentTime2:function () {//这是一个属性
+                this.message;
+                return Date.now();//返回一个时间戳
+            }
+        }
+    });
+</script>
+</html>

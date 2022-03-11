@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>style</title>
+    <style>
+        .class1{
+            color: red;
+        }
+    </style>
+</head>
+<body>
+<div id="app">
+<!--            {属性名:属性值}-->
+<!--            如果属性名为驼峰标识-->
+<!--            如果属性值为字符串必须要加''-->
+<!--            如果属性值为int类型需要加'px'-->
+   <h1 :style="{fontSize : '50px'}">{{message}}</h1>
+   <h1 :style="{fontSize : fSize}">{{message}}</h1>
+   <h1 :style="{fontSize : FontSize+ 'px'}">{{message}}</h1>
+   <h1 :style="getStyle()">{{message}}</h1>
+   <h1 :style="[listStyle,listStyle1]">{{message}}</h1> <!--数组Style-->
+</div>
+</body>
+<script src="../js/vue.js"></script>
+<script>
+    const app = new Vue({
+        el: "#app",
+        data: {
+            message:'java',
+            fSize:"100px",
+            FontSize:200,
+            listStyle:{fontSize:"100px"},
+            listStyle1:{color:"red"}
+        },
+        methods:{
+            getStyle(){
+                return {fontSize : this.fSize}
+            }
+        },
+
+    })
+</script>
+</html>

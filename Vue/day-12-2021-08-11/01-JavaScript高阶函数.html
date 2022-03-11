@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <div  id="app" >
+        <button @click="divClick">按钮</button>
+    </div>
+</body>
+<script src="../js/vue.js"></script>
+<script>
+    const app = new Vue({
+        el:"#app",
+        data:{
+            list:[1,45,87,34,65,346,63],
+        },
+        methods:{
+            divClick(){
+                //        1—filter函数的使用（过滤）
+                //filter中的回调函数有一个要求，必须返回一个boolean值
+                //如果为true时，才会返回当前参数
+                //如果为false时，函数内部会过滤掉参数
+                //获取小于100的数并返回一个数组
+                let  num = this.list.filter(function(n){
+                    return n < 100;
+                })
+                console.log(num);
+                //      2-map函数的使用（映射）
+                //获取当前参数，将当前参数*2以后返回到新的数组中，依次操作后就可实现将数组全部*2的效果
+                let num1 = this.list.map(function (n){
+                    return n * 2
+                })
+                console.log(num1)
+
+                //3-reduce 计算数组总和
+                //value:计算后的值
+                //n:数组
+                //function后还要一个参数，这个参数为默认值
+                let num3 = this.list.reduce(function (value,n){
+                   return  value + n
+                },0)
+                console.log(num3)
+
+                //链式编程
+                let num4 = this.list.filter(function (n){
+                    return n < 100;
+                }).map(function (n){
+                    return n*2;
+                }).reduce(function (value,n){
+                    return value + n;
+                },0);
+                console.log(num4);
+                //终极简写
+                let num5 =this.list.filter(n => n < 100).map(n => n*2).reduce((value,n) => n+value);
+                console.log(num5);
+            },
+        }
+    })
+</script>
+</html>

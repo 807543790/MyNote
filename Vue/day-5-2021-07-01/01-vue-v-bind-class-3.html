@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>动态绑定class</title>
+    <style>
+        .class1{
+            color: red;
+        }
+    </style>
+</head>
+<body>
+<div id="app">
+      <h2 class="demo1" :class="['demo','line']">{{message}}</h2><!-- 这里的class是通过数组的方式添加-->
+    <h2 class="demo2" :class="[demo,line]">{{message}}</h2><!-- 这里的class是通过调用data对象属性值的方式添加-->
+    <h2 class="demo2" :class="getClass()">{{message}}</h2><!-- 这里的class是通过调用methods的方式添加-->
+    <buttrn v-on:click="btnClick">点击</buttrn>
+</div>
+</body>
+<script src="../js/vue.js"></script>
+<script>
+    const app = new Vue({
+        el: "#app",
+        data: {
+            message:"hello",
+            demo:'tom',
+            line:'jerry',
+        },
+        methods:{
+            btnClick(){
+                this.name1 = !this.name1 //    ！表示取反值
+            },
+            getClass(){
+                return[this.message]
+            }
+        }
+    })
+</script>
+</html>

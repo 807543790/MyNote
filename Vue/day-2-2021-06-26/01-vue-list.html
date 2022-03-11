@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+   <ul>
+       <li v-for="itme in itmes">{{itme}}</li>
+   </ul>
+</div>
+</body>
+<script src="../js/vue.js"></script>
+<script>
+    const demo1 =new Vue({
+        el:"#app",
+        data:{
+            itmes:["张三","李四","王麻子"]
+        }
+    })
+</script>
+</html>
+
+<!--
+
+·<div id="app" v-for=" l in list"></div> 这样是不对的，因为不能循环多个id为app的div
+
+·在控制台可是使用demo1.items输出数组,也可使用push添加数组,demo1取值是使用const命名的方法取得
+
+-->

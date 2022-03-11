@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>计算属性用法</title>
+    <style>
+        .class1{
+            color: red;
+        }
+    </style>
+</head>
+<body>
+<div id="app">
+   <h1>总价格:{{totalMoney}}</h1>
+</div>
+</body>
+<script src="../js/vue.js"></script>
+<script>
+    const app = new Vue({
+        el: "#app",
+        data: {
+            books:[
+                {id:1,name:"java",money:101},
+                {id:2,name:"linux",money:341},
+                {id:3,name:"mysql",money:541},
+                {id:4,name:"windows",money:81},
+                {id:5,name:"ios",money:31},
+            ],
+        },
+        // 计算属性,取值使用时最简便,调用时不需要加()
+        computed:{
+            totalMoney(){
+                var money = 0;
+                for (let i = 0; i <this.books.length ; i++) {
+                     money +=this.books[i].money
+                }
+                return money;
+
+                // 多种for循环
+                // for(let i in this.books){
+                //     this.books[i].money
+                // }
+
+                // for(let book of this.books){
+                //         book.money
+                // }
+
+            }
+        },
+
+    })
+</script>
+</html>

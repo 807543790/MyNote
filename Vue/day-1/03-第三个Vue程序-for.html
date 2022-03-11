@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>第三个Vue程序:for</title>
+
+</head>
+<body>
+
+    <div id="app">
+        <li v-for="item in items">
+            {{item.message}}
+        </li>
+    </div>
+
+</body>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script>
+     var vm = new Vue({
+         el:"#app",
+         data:{
+             items:[
+                 {message:'张斌1'},
+                 {message:'张斌2'},
+                 {message:'张斌3'},
+                 {message:'张斌4'}
+             ]
+         }
+     });
+</script>
+</html>

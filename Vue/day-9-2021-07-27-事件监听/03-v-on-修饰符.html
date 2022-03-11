@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>v-on</title>
+</head>
+<body>
+<!--修饰符1：stop 可以处理在点击按钮时不串调用DIV的点击事件-->
+<div  id="app" @click="divClick">DIV
+    <button @click.stop="butClick">按钮</button>
+
+<!--修饰符二：prevent阻止默认事件，比如阻止form表单自动提交-->
+    <form action="http://www.baidu.com">
+        <input type="submit" @click.prevent="submitClick" value="提交"/>
+    </form>
+<!--修饰符三：监听某个按钮的enter，比如只监听回车按钮，其他按钮不坐监听-->
+    <input type="text" @keyup.enter="getKeyUp">
+<!--    修饰符四:once,只会执行一次-->
+    <button  @click.once="onceClick">按钮2</button>
+</div>
+</body>
+<script src="../js/vue.js"></script>
+<script>
+    const app = new Vue({
+        el:"#app",
+        data:{
+            count : 0,
+        },
+        methods:{
+            divClick(){
+               alert("div");
+            },
+            butClick(){
+               alert("but");
+            },
+            submitClick(){
+              console.log("submitClick");
+            },
+            getKeyUp(){
+                console.log("键盘点击事件")
+            },
+            onceClick(){
+                console.log("onceClick")
+            }
+
+        }
+
+    })
+
+</script>
+</html>

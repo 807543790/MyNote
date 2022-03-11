@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>v-on</title>
+</head>
+<body>
+<div  id="app">
+    v-show和v-if的区别，if为false时在DOM中不会渲染，而show只是加了个display属性而已。
+   <h1 v-show="isShow">show</h1>
+   <h1 v-if="isShow">if</h1>
+</div>
+</body>
+<script src="../js/vue.js"></script>
+<script>
+    const app = new Vue({
+        el:"#app",
+        data:{
+            isShow : false,
+        },
+
+
+    })
+
+</script>
+</html>

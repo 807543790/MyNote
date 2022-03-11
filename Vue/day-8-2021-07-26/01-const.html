@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>const</title>
+</head>
+<body>
+
+</body>
+<script src="../js/vue.js"></script>
+<script>
+    // 一：const 类似于java里边的 final,一旦定义无法修改
+    // const name ="zhang";
+    // name = "李四";
+
+
+    // 二:const如果被使用,就必须要赋值
+    // const name;
+
+    // 三：常量的含义是指向的对象不能修改，但是可以改变对象的内部属性
+    const obj = {
+        name:"张三",
+        age:18
+    }
+
+    obj.name="李四";
+</script>
+</html>

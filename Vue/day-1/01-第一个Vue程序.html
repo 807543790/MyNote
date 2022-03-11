@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:v-bind="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>第一个Vue程序</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        {{message}}
+        <span v-bind:title="message">
+            鼠标停留查看提示信息
+        </span>
+    </div>
+
+</body>
+<script>
+        var app =new Vue({
+            el:'#app',
+            data:{
+                message:'Hello Vue' + new Date().toLocaleDateString()
+            }
+        })
+</script>
+</html>

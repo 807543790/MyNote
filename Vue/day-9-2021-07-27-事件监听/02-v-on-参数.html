@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>v-on</title>
+</head>
+<body>
+<div  id="app">
+<!--    情况一：没有参数-->
+    <button @click="but1">按钮1</button>
+<!--    情况二：没有参数但是要获取event对象-->
+<!--    <button @click="but2()">按钮2</button> 错误写法，带()会获取不到-->
+    <button @click="but2">按钮2</button>
+<!--    情况三：传递参数并且接受参数-->
+    <button @click="but3('zhang')">按钮3</button>
+<!--    情况四：传递参数并且获得event对象-->
+    <button @click="but4(123,$event)">按钮4</button>
+
+</div>
+</body>
+<script src="../js/vue.js"></script>
+<script>
+    const app = new Vue({
+        el:"#app",
+        data:{
+            count : 0,
+        },
+        methods:{
+            but1(){
+
+            },
+            but2(event){
+               console.log(event)
+            },
+            but3(name){
+               alert(name);
+            },
+            but4(name,event){
+               console.log(name+"--"+event);
+               console.log(event);
+            },
+        }
+
+    })
+
+</script>
+</html>

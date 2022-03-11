@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:v-bind="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>插槽</title>
+</head>
+<body>
+<div id="app">
+
+    <!--第五个-->
+    <!--这里取（Vue.component）定义好的name为标签-->
+    <!--slot属性：绑定定义的插槽-->
+    <!--(:title) == v-bind:title   :title是简写 -->
+    <todo>
+        <todo-title slot="todo-title" :title="title"></todo-title>
+        <todo-items slot="todo-items" v-for="item in items" :item="item"></todo-items>
+    </todo>
+</div>
+
+
+</body>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script type="text/javascript">
+
+    //  第一个
+    // slot：插槽   name绑定下方定义Vue.component标签的数据
+    //      "\"表示和"<td>"+"</td>"是一个意思
+    Vue.component("todo",{
+        template:'<div>\
+                        <slot name="todo-title"></slot>\
+                        <ul>\
+                            <slot name="todo-items"></slot>\
+                        </ul>\
+                 </div>'
+    });
+    //  第二个
+    // slot：插槽   props定义数据绑定  template：将定义好的标签替换到模板中
+    Vue.component("todo-title",{
+        props:["title"],
+        template:'<div>{{title}}</div>'
+    });
+    //  第三个
+    // slot：插槽   props定义数据绑定    template：将定义好的标签替换到模板中
+    Vue.component("todo-items",{
+        props: ["item"],
+        template:"<li>{{item}}</li>"
+    });
+
+    // 第四步：定义数据。
+    var vm = new Vue({
+        el: "#app",
+        data: {
+            title:"书籍",
+            items:["三国","水浒","西游记"]
+        },
+
+    });
+</script>
+</html>

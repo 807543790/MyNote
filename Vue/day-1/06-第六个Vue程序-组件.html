@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>组件</title>
+</head>
+<body>
+
+<div id="app">
+    <!--将for循环出来的item绑定到zhang-->
+    <zhangbin v-for="item in items" v-bind:zhang="item"></zhangbin>
+
+</div>
+
+</body>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script>
+    // 定义一个vue组件component
+    Vue.component("zhangbin",{
+        //属性
+        props:['zhang'],
+        //模板
+        template:'<li>{{zhang}}</li>'
+    })
+    var vm = new Vue({
+        el:"#app",
+        data:{
+           items:["java","html","jsp"]
+        }
+    });
+</script>
+</html>

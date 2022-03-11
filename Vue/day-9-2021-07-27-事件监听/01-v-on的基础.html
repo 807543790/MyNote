@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>v-on</title>
+</head>
+<body>
+<div  id="app">
+    <h1>{{count}}</h1>
+<!--    基本语法-->
+    <button v-on:click="add">+</button>
+    <button v-on:click="del">-</button><br>
+<!--用法二-->
+    <button v-on:click="count++">+</button>
+    <button v-on:click="count--">-</button><br>
+<!--    语法糖-->
+    <button @click="add">+</button>
+    <button @click="del">-</button><br>
+</div>
+</body>
+<script src="../js/vue.js"></script>
+<script>
+    const app = new Vue({
+        el:"#app",
+        data:{
+            count : 0,
+        },
+        methods:{
+            add(){
+                this.count++;
+            },
+            del(){
+                this.count--;
+            }
+        }
+
+    })
+
+</script>
+</html>

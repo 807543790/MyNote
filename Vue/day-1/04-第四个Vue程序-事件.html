@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:v-on="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>第三个Vue程序:for</title>
+
+</head>
+<body>
+
+    <div id="app">
+        <button v-on:click="sayHi">点击</button>
+    </div>
+
+</body>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script>
+     var vm = new Vue({
+         el:"#app",
+         data:{
+           message:"张斌"
+         },
+         methods:{//方法必须定义再Vue的methods对象中，使用v-on调用事件
+             sayHi:function () {
+                 alert(this.message);
+             }
+         }
+     });
+</script>
+</html>

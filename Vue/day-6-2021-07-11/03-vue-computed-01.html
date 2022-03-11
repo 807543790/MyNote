@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>计算属性</title>
+    <style>
+        .class1{
+            color: red;
+        }
+    </style>
+</head>
+<body>
+<div id="app">
+   <h1>{{message}}  {{name}}</h1>
+   <h1>{{message + '' + name}}</h1>
+   <h1>{{getName()}}</h1>
+
+   <h1>{{getFirstName}}</h1><!-- 计算属性,取值使用时最简便,调用时不需要加()-->
+</div>
+</body>
+<script src="../js/vue.js"></script>
+<script>
+    const app = new Vue({
+        el: "#app",
+        data: {
+            message1:'java',
+            name:"linux",
+        },
+        // 计算属性,取值使用时最简便,调用时不需要加()
+        computed:{
+            getFirstName(){
+                return this.message + '' + this.name;
+            }
+        },
+        methods:{
+            getName(){
+                return this.message + '' + this.name;
+            }
+        },
+
+    })
+</script>
+</html>

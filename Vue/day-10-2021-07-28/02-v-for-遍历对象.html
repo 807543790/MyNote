@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>v-on</title>
+</head>
+<body>
+<div  id="app">
+<!--    循环获取对象值-->
+   <ul>
+       <li v-for="value in info">{{value}}</li>
+   </ul>
+<!--    循环获取对象值和属性名称-->
+    <ul>
+        <li v-for="(value,name) in info">{{value}}-{{name}}</li>
+    </ul>
+<!--循环获取对象值和属性名称和索引值   (对象值，属性名，索引值)-->
+    <ul>
+        <li v-for="(value,name,index) in info">{{value}}-{{age}}-{{name}}</li>
+    </ul>
+</div>
+</body>
+<script src="../js/vue.js"></script>
+<script>
+    const app = new Vue({
+        el:"#app",
+        data:{
+            info : {
+                name:"tom",
+                age:18,
+                height:178,
+            },
+        },
+
+
+    })
+
+</script>
+</html>

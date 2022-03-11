@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:v-bind="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>axios</title>
+    <style>
+        [v-clock]{
+            display: none;
+        }
+    </style>
+</head>
+<body>
+<!--添加 v-clock是为了防止页面浏览的时候先加载模板再渲染数据-->
+<div id="vue" v-clock>
+    <div>{{info.name}}</div>
+
+    <a v-bind:href="info.url">点击</a>
+</div>
+
+
+</body>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script type="text/javascript">
+    var vm = new Vue({
+        el: "#vue",
+        //data：属性，还有一个类似的
+        data(){
+            return{
+                info:{
+                    name:null,
+                    address:{
+                        street:null,
+                        city:null,
+                        country:null
+                    },
+                    url:null
+                }
+            }
+        },
+        mounted(){//钩子函数，链式编程，Es6新特性
+            axios.get("data.json").then(response=>(this.info = response.data));
+            // 通过get获取定义好的data.json数据
+        }
+    });
+</script>
+</html>
