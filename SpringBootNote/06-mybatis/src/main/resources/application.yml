@@ -1,0 +1,12 @@
+spring:
+  datasource:
+    username: root
+    password: 807543790
+    url: jdbc:mysql://localhost:3306/dayu?serverTimezone=UTC&useUnicode=true&characterEncoding=utf-8
+    driver-class-name: com.mysql.cj.jdbc.Driver
+#整合mybatis
+mybatis:
+  #实现查询返回实体类别名绑定
+  type-aliases-package: com.zhangbin.pojo
+  #绑定XML文件
+  mapper-locations: classpath:mybatis/mapper/*.xml

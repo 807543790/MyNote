@@ -1,0 +1,55 @@
+#普通的kv键值对
+name: zhangbin
+
+#对象
+student:
+  name: zhangbin
+  aee: 3
+
+# 行内写法
+student1: {name: zhangbin,age: 3}
+
+#数组
+pets:
+  -cat
+  -dog
+  -pig
+
+pets1: [cat,dog,pig]
+
+#实体类赋值
+person:
+  name: 807543790@qq.com
+  age: 3
+  happy: true
+  birthday: 2020/03/24
+  maps: {k1: v1,k2: v2}
+  lists:
+    -mybatis
+    -spring
+  dog:
+    name: 宣乃静
+    age: 24
+
+
+
+    #yaml多环境配置,多个环境使用---区分
+
+server:
+  port: 8080
+
+spring:
+  profiles:
+    active: dev
+---
+
+server:
+  port: 8081
+spring:
+  profiles: test
+---
+server:
+  port: 8082
+spring:
+  profiles: dev
+
