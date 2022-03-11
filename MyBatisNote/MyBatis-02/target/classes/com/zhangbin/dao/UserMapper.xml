@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!--namespace绑定�?个对应的dao/mapper接口-->
+<mapper namespace="com.zhangbin.dao.UserMapper">
+
+    <!--resultType为返回的类型 区分大小�?-->
+    <!--parameterType为参数类�?  区分大小�?-->
+
+    <!--id为接口的方法名称-->
+    <select id="getUserList" resultType="User">
+      select * from dayu.userdata
+    </select>
+    <!--根据Id查数�?-->
+    <select id="getUserById" parameterType="int" resultType="User">
+        select * from dayu.userdata where id=#{id}
+    </select>
+    <!--添加数据-->
+    <insert id="addUser" parameterType="User">
+        insert into dayu.userdata(id,name,token) values (#{id},#{name},#{token})
+    </insert>
+
+    <!--更新数据-->
+    <update id="updateUser" parameterType="User">
+        update dayu.userdata set name=#{name},token=#{token} where id=#{id}
+    </update>
+
+    <!--删除数据-->
+    <delete id="deleteUser" parameterType="int">
+        delete from userdata where id=#{id}
+    </delete>
+
+    <!--map插入数据-->
+    <insert id="addUser1" parameterType="map">
+        insert into dayu.userdata(id,name,token) values (#{userid},#{username},#{usertoken})
+    </insert>
+
+    <!--map修改数据-->
+    <update id="updateUser1" parameterType="map">
+        update dayu.userdata set name=#{username},token=#{usertoken} where id=#{userid}
+    </update>
+    <!--like查询。可以使用再方法内添�?%%符号防止SQL注入问题，也可以�?#{value}的前后加�?%也能查询，但是会有SQL注入问题("%" #{value} "%")-->
+    <select id="getUserLike" resultType="User" parameterType="String">
+        select * from dayu.userdata where name like  #{value}
+    </select>
+</mapper>

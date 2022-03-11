@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!--namespace绑定�?个对应的dao/mapper接口-->
+<mapper namespace="com.zhangbin.dao.UserMapper">
+
+
+    <!--2、定义一个resultMap   其中id：SQL语句中定义的resultMap值，type：实体类类型�?-->
+    <resultMap id="userMap" type="user">
+        <!--3、column：数据库列名  property:实体类名�?-->
+        <result column="name" property="username"></result>
+    </resultMap>
+
+
+    <!--1、使用resultMap解决数据库字段和实体类字段不统一的问�?-->
+    <select id="getUserList" resultMap="userMap">
+      select * from dayu.userdata
+    </select>
+
+
+    <!--注意！！！！也可以使用修改SQL语句中的*，将不同的字段添加别名处理�?�不建议使用-->
+</mapper>

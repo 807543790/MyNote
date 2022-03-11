@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zhangbin.dao.StudentMapper">
+    <!--多对一查询-->
+
+    <!--思路一：嵌套查询（子查询）-->
+        <!--一：查询所有的学生数据-->
+        <select id="getStudentTeacher" resultMap="Teacher">
+            SELECT * FROM student
+        </select>
+
+        <!--二：根据查询出来学生数据作为条件再查询对应的老师数据-->
+        <select id="getTeacher" resultType="Teacher">
+            select * from teacher where id = #{id}
+        </select>
+        <!--三：定义resultMap标签  id对应select标签中的resultMap值-->
+        <resultMap id="Teacher" type="Student">
+            <!--将对应的实体类字段和数据库字段做对应-->
+            <result property="id" column="id"></result>
+            <result property="name" column="name"></result>
+            <!--使用association标签，做实体类和数据库字段对应。 association（关联）标签(查询字段是实体类事使用的标签)
+            javaType为对应的实体类类型，select对应的是子查询select标签的id-->
+            <association property="teacher" column="id" javaType="Teacher" select="getTeacher"/>
+        </resultMap>
+
+    <!--多对一查询-->
+    <!--思路二：结果嵌套查询-->
+        <!--一：查询所有的学生和老师的数据-->
+        <select id="getStudentTeacher2" resultMap="StudentMap">
+            select s.id sid,s.name sname, t.name tname,t.id tid from student s,teacher t where t.id =  s.tid;
+        </select>
+        <!--二：定义resultMap标签  id对应select标签中的resultMap值-->
+        <resultMap id="StudentMap" type="Student">
+            <!--将对应的实体类字段和数据库字段做对应-->
+            <result property="id" column="sid"></result>
+            <result property="name" column="sname"></result>
+            <result property="id" column="sid"></result>
+            <!--使用association标签，做实体类和数据库字段对应。 association（关联）标签(查询字段是实体类事使用的标签)
+            javaType为对应的实体类类型，select对应的是子查询select标签的id-->
+            <association property="teacher" javaType="Teacher">
+                <result property="name" column="tname"></result>
+                <result property="id" column="tid"></result>
+            </association>
+        </resultMap>
+</mapper>

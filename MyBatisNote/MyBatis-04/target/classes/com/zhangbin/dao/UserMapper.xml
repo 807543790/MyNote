@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!--namespace绑定�?个对应的dao/mapper接口-->
+<mapper namespace="com.zhangbin.dao.UserMapper">
+
+    <!--limit分页-->
+    <select id="getUserLimit" resultType="user" parameterType="map">
+        select * from dayu.userdata limit #{num},#{number}
+    </select>
+
+    <!--RowBounds分页分页-->
+    <select id="getUserRow" resultType="user">
+        select * from dayu.userdata
+    </select>
+</mapper>

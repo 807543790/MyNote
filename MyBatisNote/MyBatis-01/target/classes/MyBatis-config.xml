@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+    <environments default="development">
+        <environment id="development">
+            <transactionManager type="JDBC"/>
+            <dataSource type="POOLED">
+                <property name="driver" value="com.mysql.jdbc.Driver"/>
+                <property name="url" value="jdbc:mysql://localhost:3306/dayu?useSSL=true&amp;useUnicode=true&amp;characterEncoding=UTF-8"/>
+                <property name="username" value="root"/>
+                <property name="password" value="807543790"/>
+            </dataSource>
+        </environment>
+    </environments>
+
+    <!--每一个mapper.xml都需要在mybatis核心配置文件中注册-->
+    <mappers>
+        <mapper resource="com/zhangbin/dao/UserMapper.xml"></mapper>
+        <!--使用注解需要配置接口，注意XML和接口不能配在一个mapper里，否则会报错-->
+        <mapper class="com.zhangbin.dao.UserMapperInteFace"></mapper>
+    </mappers>
+</configuration>

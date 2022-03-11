@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zhangbin.dao.BlogMapper">
+
+    <insert id="addBlog" parameterType="Blog">
+        insert into blog(id, title, author,create_time, views) values (#{id}, #{title}, #{author}, #{createTime},#{views} )
+    </insert>
+
+    <!--SQL标签将公共的条件字段提取出来，定义唯�?ID供其他SQL使用,在要使用SQL中加�?<include>标签使用 refid对应的是<SQL>的id-->
+    <sql id="sql-title">
+        <if test="title != null">
+            and title = #{title}
+        </if>
+        <if test="author != null">
+            and author = #{author}
+        </if>
+    </sql>
+
+    <!--动�?�查询之if-->
+    <!--<where>标签替代SQL中的WHERE�?
+        where 元素只会在子元素返回任何内容的情况下才插�? “WHERE�? 子句�?
+        而且，若子句的开头为 “AND�? �? “OR”，where 元素也会将它们去除�??-->
+    <select id="getBlogsIF" parameterType="map" resultType="Blog">
+        select * from blog
+        <where>
+
+            <include refid="sql-title"></include>
+        </where>
+    </select>
+    <!--动�?�查询之Choose-->
+    <!--<Choose>标签类似于java中的switch�?
+    只能有一个符合的条件进行查询，如果没有那就执�?<otherwise>标签里的SQL,注意该标签没有其他属�?-->
+    <select id="getBlogsChoose" parameterType="map" resultType="Blog">
+        select * from blog
+        <where>
+            <choose>
+                <when test="title != null">
+                    and title = #{title}
+                </when>
+                <when test="author != null">
+                    and author = #{author}
+                </when>
+                <otherwise>
+                    and views  =#{views}
+                </otherwise>
+            </choose>
+        </where>
+    </select>
+
+    <!--动�?�查询之Set-->
+    <!--set 元素会动态地在行首插�? SET 关键字，
+        并会删掉额外的�?�号（这些�?�号是在使用条件语句给列赋�?�时引入的）。这些�?�号是在使用条件语句给列赋�?�时引入�?-->
+    <update id="updateBlog" parameterType="map" >
+        update blog
+        <set>
+            <if test="title != null">
+                 title = #{title},
+            </if>
+            <if test="author != null">
+                 author = #{author},
+            </if>
+        </set>
+        where id = #{id}
+    </update>
+
+    <!--动�?�SQL之forEach-->
+    <!--collection属�?�表示要循环的数据，open表示SQL前拼接的东西，close表示SQL拼接的东西，separator表示循环属�?�之间插入的东西-->
+    <select id="getBlogForEach" parameterType="map" resultType="Blog">
+        select * from blog
+        <where>
+            <foreach collection="ids" open="and (" close=")" item="id" separator="or">
+                id = #{id}
+            </foreach>
+        </where>
+    </select>
+</mapper>
